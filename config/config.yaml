@@ -1,0 +1,184 @@
+account:
+  cookies:
+  - domain: juejin.cn
+    expires: 1775527110
+    httpOnly: false
+    name: s_v_web_id
+    path: /
+    sameSite: Lax
+    secure: false
+    value: verify_mla8ku7p_Ji5HSfBO_xbu4_4eNa_93XF_3wRrgRSVwtpk
+  - domain: .juejin.cn
+    expires: 1804903110.17429
+    httpOnly: false
+    name: _tea_utm_cache_2608
+    path: /
+    sameSite: Lax
+    secure: false
+    value: undefined
+  - domain: .juejin.cn
+    expires: 1804903110.430872
+    httpOnly: false
+    name: __tea_cookie_tokens_2608
+    path: /
+    sameSite: Lax
+    secure: false
+    value: '%257B%2522web_id%2522%253A%25227603565717896906275%2522%252C%2522user_unique_id%2522%253A%25227603565717896906275%2522%252C%2522timestamp%2522%253A1770343110430%257D'
+  - domain: .juejin.cn
+    expires: 1775527114.647459
+    httpOnly: false
+    name: passport_csrf_token
+    path: /
+    sameSite: None
+    secure: true
+    value: e3c9c73adc695f67e57bd1d3906c92ec
+  - domain: .juejin.cn
+    expires: 1775527114.647553
+    httpOnly: false
+    name: passport_csrf_token_default
+    path: /
+    sameSite: Lax
+    secure: false
+    value: e3c9c73adc695f67e57bd1d3906c92ec
+  - domain: api.juejin.cn
+    expires: -1
+    httpOnly: false
+    name: csrf_session_id
+    path: /
+    sameSite: None
+    secure: true
+    value: 3cb0ec9bd450cbf637be22c7c2b637b6
+  - domain: .juejin.cn
+    expires: 1770346916.3291
+    httpOnly: true
+    name: passport_csrf_token_wap_state
+    path: /
+    sameSite: Lax
+    secure: true
+    value: 0b521e093gAToVCgoVPZIDUwMWU0ZTFhNzg0YWM3YTUwODU5NmM1YWY4MzgyZjQ4oU6-aHR0cHM6Ly9qdWVqaW4uY24vb2F1dGgtcmVzdWx0oVYBoUkAoUQAoUHRCjChTdEKMKFIqWp1ZWppbi5jbqFSBKJQTNEE_aZBQ1RJT06goUyyaHR0cHM6Ly9qdWVqaW4uY24voVTZIDVkZDM4YjliNzU2MTlmZjYwM2UyNGZkMzIxMGI3MDFkoVcAoUYAolNBAKFVw6JNTMI%253D
+  - domain: .juejin.cn
+    expires: 1780714626.953837
+    httpOnly: true
+    name: n_mh
+    path: /
+    sameSite: Lax
+    secure: false
+    value: OhTVPdZawsXrKSJorjbaCC2fbLAP1RHjTk92jvKX5TI
+  - domain: .juejin.cn
+    expires: 1801450626.95503
+    httpOnly: true
+    name: sid_guard
+    path: /
+    sameSite: Lax
+    secure: false
+    value: 4554803fbf62af16aeb166cd119d5acc%7C1770346628%7C31536000%7CSat%2C+06-Feb-2027+02%3A57%3A08+GMT
+  - domain: .juejin.cn
+    expires: 1801882626.95521
+    httpOnly: true
+    name: uid_tt
+    path: /
+    sameSite: Lax
+    secure: false
+    value: 9cf2d3d23991f44c8ccca8c7a206b0bf
+  - domain: .juejin.cn
+    expires: 1801882626.955378
+    httpOnly: true
+    name: uid_tt_ss
+    path: /
+    sameSite: None
+    secure: true
+    value: 9cf2d3d23991f44c8ccca8c7a206b0bf
+  - domain: .juejin.cn
+    expires: 1801882626.955539
+    httpOnly: true
+    name: sid_tt
+    path: /
+    sameSite: Lax
+    secure: false
+    value: 4554803fbf62af16aeb166cd119d5acc
+  - domain: .juejin.cn
+    expires: 1801882626.955696
+    httpOnly: true
+    name: sessionid
+    path: /
+    sameSite: Lax
+    secure: false
+    value: 4554803fbf62af16aeb166cd119d5acc
+  - domain: .juejin.cn
+    expires: 1801882626.955852
+    httpOnly: true
+    name: sessionid_ss
+    path: /
+    sameSite: None
+    secure: true
+    value: 4554803fbf62af16aeb166cd119d5acc
+  - domain: .juejin.cn
+    expires: 1801882626.956192
+    httpOnly: true
+    name: is_staff_user
+    path: /
+    sameSite: Lax
+    secure: false
+    value: 'false'
+  - domain: .juejin.cn
+    expires: 1801882626.956347
+    httpOnly: true
+    name: sid_ucp_v1
+    path: /
+    sameSite: Lax
+    secure: true
+    value: 1.0.0-KDA0YWU2MWE1YjM5NDRiYjhkYjBlZjM0MjVkYzVlOTU3ZDk3MDIzMzkKFgiH_YD9l82QAxCEsZXMBhiwFDgIQAsaAmxxIiA0NTU0ODAzZmJmNjJhZjE2YWViMTY2Y2QxMTlkNWFjYw
+  - domain: .juejin.cn
+    expires: 1801882626.956512
+    httpOnly: true
+    name: ssid_ucp_v1
+    path: /
+    sameSite: None
+    secure: true
+    value: 1.0.0-KDA0YWU2MWE1YjM5NDRiYjhkYjBlZjM0MjVkYzVlOTU3ZDk3MDIzMzkKFgiH_YD9l82QAxCEsZXMBhiwFDgIQAsaAmxxIiA0NTU0ODAzZmJmNjJhZjE2YWViMTY2Y2QxMTlkNWFjYw
+  - domain: .juejin.cn
+    expires: 1801882626.956014
+    httpOnly: true
+    name: session_tlb_tag
+    path: /
+    sameSite: None
+    secure: true
+    value: sttt%7C18%7CRVSAP79irxausWbNEZ1azP_________59MVvleGaR6Veb1qnVXb3FbfoNnb9FpROCncRbv-1VH0%3D
+  - domain: .juejin.cn
+    expires: 1804906627.374175
+    httpOnly: false
+    name: _ga
+    path: /
+    sameSite: Lax
+    secure: false
+    value: GA1.2.339239678.1770346627
+  - domain: .juejin.cn
+    expires: 1770433027
+    httpOnly: false
+    name: _gid
+    path: /
+    sameSite: Lax
+    secure: false
+    value: GA1.2.478207181.1770346627
+  - domain: .juejin.cn
+    expires: 1770346687
+    httpOnly: false
+    name: _gat
+    path: /
+    sameSite: Lax
+    secure: false
+    value: '1'
+  - domain: .juejin.cn
+    expires: 1804906627.893475
+    httpOnly: false
+    name: _ga_S695FMNGPJ
+    path: /
+    sameSite: Lax
+    secure: false
+    value: GS2.2.s1770346627$o1$g0$t1770346627$j60$l0$h0
+browser:
+  headless: true
+  timeout: 30000
+logging:
+  file: juejin_checkin.log
+  level: INFO
