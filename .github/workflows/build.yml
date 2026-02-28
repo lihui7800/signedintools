@@ -82,17 +82,15 @@ jobs:
           Copy-Item dist/signedintools.exe package/
           Copy-Item config/config.yaml package/config/
           Copy-Item README.md package/
-          @"
-@echo off
-setlocal
-echo Installing Playwright browser dependencies...
-signedintools.exe
-if %ERRORLEVEL% NEQ 0 (
-  echo signedintools exited with error code %ERRORLEVEL%
-  exit /b %ERRORLEVEL%
-)
-echo Done.
-"@ | Out-File -FilePath package/run.bat -Encoding ascii
+          @(
+            '@echo off'
+            'setlocal'
+            'signedintools.exe'
+            'if %ERRORLEVEL% NEQ 0 ('
+            '  echo signedintools exited with error code %ERRORLEVEL%'
+            '  exit /b %ERRORLEVEL%'
+            ')'
+          ) | Set-Content -Path package/run.bat -Encoding ascii
           Compress-Archive -Path package/* -DestinationPath "${{ matrix.artifact_file }}" -Force
 
       - name: Prepare Linux package
@@ -103,12 +101,7 @@ echo Done.
           cp dist/signedintools package/
           cp config/config.yaml package/config/
           cp README.md package/
-          cat > package/run.sh << 'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-chmod +x ./signedintools
-./signedintools
-EOF
+          printf '%s\n' '#!/usr/bin/env bash' 'set -euo pipefail' 'chmod +x ./signedintools' './signedintools' > package/run.sh
           chmod +x package/run.sh
           tar -czf "${{ matrix.artifact_file }}" -C package .
 
