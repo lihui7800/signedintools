@@ -1,5 +1,9 @@
 # 掘金自动签到工具
 
+![Build](https://github.com/<OWNER>/<REPO>/actions/workflows/build.yml/badge.svg)
+
+> 使用前请将上方 `<OWNER>/<REPO>` 替换为你的 GitHub 用户名（或组织）和仓库名。
+
 这是一个基于 Playwright 的掘金自动签到工具，支持 Cookie 自动管理和手动登录引导。
 
 ## 功能特性
@@ -137,6 +141,19 @@ python main.py
 5. **运行频率**：建议合理设置签到频率，避免过于频繁的操作
 
 ## 定时任务设置
+
+## GitHub 自动构建
+
+项目已包含 GitHub Actions 工作流文件：`.github/workflows/build.yml`。
+
+触发条件：
+- 推送到 `main` 或 `master` 分支
+- 任意 Pull Request
+
+构建流程：
+1. 使用 Python 3.10 / 3.11 / 3.12 矩阵构建
+2. 安装 `requirements.txt` 依赖
+3. 执行 `python -m compileall .` 进行语法构建检查
 
 ### Windows
 
