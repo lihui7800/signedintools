@@ -140,11 +140,11 @@ python main.py
 4. **平台规则**：请遵守掘金平台的使用条款和用户协议
 5. **运行频率**：建议合理设置签到频率，避免过于频繁的操作
 
-## 定时任务设置
-
-## GitHub 自动构建
+## GitHub 自动构建与发布
 
 项目已包含 GitHub Actions 工作流文件：`.github/workflows/build.yml`。
+
+### 自动构建（CI）
 
 触发条件：
 - 推送到 `main` 或 `master` 分支
@@ -154,6 +154,27 @@ python main.py
 1. 使用 Python 3.10 / 3.11 / 3.12 矩阵构建
 2. 安装 `requirements.txt` 依赖
 3. 执行 `python -m compileall .` 进行语法构建检查
+
+### 自动发布（Release）
+
+触发条件：
+- 推送版本标签：`v*`（如 `v1.0.0`）
+
+发布流程：
+1. 在 Windows/Linux 环境使用 PyInstaller 构建可执行文件
+2. 打包生成：
+    - `signedintools-windows-x64.zip`
+    - `signedintools-linux-x64.tar.gz`
+3. 自动创建 GitHub Release 并上传上述安装包
+
+你可以通过以下命令触发一次发布：
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+## 定时任务设置
 
 ### Windows
 

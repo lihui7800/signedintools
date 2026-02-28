@@ -1,14 +1,20 @@
-name: Build
+name: CI and Release
 
 on:
   push:
     branches:
       - main
       - master
+    tags:
+      - 'v*'
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -33,3 +39,100 @@ jobs:
       - name: Build check (compile)
         run: |
           python -m compileall .
+
+  package:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: ci
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            package_name: signedintools-windows-x64
+            artifact_file: signedintools-windows-x64.zip
+          - os: ubuntu-latest
+            package_name: signedintools-linux-x64
+            artifact_file: signedintools-linux-x64.tar.gz
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+
+      - name: Build executable
+        run: |
+          pyinstaller --name signedintools --onefile main.py
+
+      - name: Prepare Windows package
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path package/config -Force | Out-Null
+          Copy-Item dist/signedintools.exe package/
+          Copy-Item config/config.yaml package/config/
+          Copy-Item README.md package/
+          @"
+@echo off
+setlocal
+echo Installing Playwright browser dependencies...
+signedintools.exe
+if %ERRORLEVEL% NEQ 0 (
+  echo signedintools exited with error code %ERRORLEVEL%
+  exit /b %ERRORLEVEL%
+)
+echo Done.
+"@ | Out-File -FilePath package/run.bat -Encoding ascii
+          Compress-Archive -Path package/* -DestinationPath "${{ matrix.artifact_file }}" -Force
+
+      - name: Prepare Linux package
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          mkdir -p package/config
+          cp dist/signedintools package/
+          cp config/config.yaml package/config/
+          cp README.md package/
+          cat > package/run.sh << 'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+chmod +x ./signedintools
+./signedintools
+EOF
+          chmod +x package/run.sh
+          tar -czf "${{ matrix.artifact_file }}" -C package .
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.package_name }}
+          path: ${{ matrix.artifact_file }}
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/signedintools-windows-x64/signedintools-windows-x64.zip
+            release-assets/signedintools-linux-x64/signedintools-linux-x64.tar.gz
+          generate_release_notes: true
